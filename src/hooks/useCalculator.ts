@@ -66,7 +66,6 @@ export default function useCalculator() {
     }
 
     if (value === "calculate") {
-      // Не добавляем повторную запись при повторном нажатии "=".
       if (isCalculated) {
         return;
       }
