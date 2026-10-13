@@ -3,11 +3,12 @@
 import { useState } from "react";
 import type { CalculatorMode } from "@/types/calculator";
 import useCalculator from "@/hooks/useCalculator";
-
-import styles from "./Calculator.module.scss";
-import ModeSwitch from "../ModeSwitch/ModeSwitch";
+import useKeyboard from "@/hooks/useKeyboard";
 import Display from "../Display/Display";
 import Keypad from "../Keypad/Keypad";
+import ModeSwitch from "../ModeSwitch/ModeSwitch";
+import History from "../History/History";
+import styles from "./Calculator.module.scss";
 
 export default function Calculator() {
   const [mode, setMode] = useState<CalculatorMode>("scientific");
@@ -16,8 +17,17 @@ export default function Calculator() {
     expression,
     result,
     error,
+    history,
+    isHistoryLoaded,
     handleInput,
+    restoreExpression,
+    clearHistory,
   } = useCalculator();
+
+  useKeyboard({
+    onInput: handleInput,
+    enabled: isHistoryLoaded,
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -42,21 +52,18 @@ export default function Calculator() {
           scientific={mode === "scientific"}
           onInput={handleInput}
         />
+
+        <p className={styles.keyboardHint}>
+          Enter = calculate · Esc = clear · Backspace = delete
+        </p>
       </section>
 
-      <section
-        className={styles.history}
-        aria-labelledby="history-title"
-      >
-        <header className={styles.historyHeader}>
-          <div>
-            <h2 id="history-title">Calculation history</h2>
-            <p>Last 10 calculations</p>
-          </div>
-        </header>
-
-        <p className={styles.emptyHistory}>No calculations yet</p>
-      </section>
+      <History
+        items={history}
+        isLoaded={isHistoryLoaded}
+        onSelect={restoreExpression}
+        onClear={clearHistory}
+      />
     </div>
   );
 }

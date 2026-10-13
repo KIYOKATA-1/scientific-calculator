@@ -11,3 +11,10 @@ export interface CalculatorButton {
 }
 
 export type CalculatorMode = "basic" | "scientific";
+
+export interface HistoryItem {
+  id: string;
+  expression: string;
+  result: string;
+  createdAt: number;
+}
