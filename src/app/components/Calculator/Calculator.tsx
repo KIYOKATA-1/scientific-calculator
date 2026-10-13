@@ -1,3 +1,4 @@
+import Keypad from "../Keypad/Keypad";
 import styles from "./Calculator.module.scss";
 
 export default function Calculator() {
@@ -15,7 +16,7 @@ export default function Calculator() {
         </div>
 
         <div className={styles.placeholder}>
-            Keyboard
+            <Keypad/>
         </div>
       </section>
 

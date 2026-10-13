@@ -1,0 +1,11 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+export interface CalculatorButton {
+  id: string;
+  label: string;
+  value: string;
+  ariaLabel: string;
+  variant: "number" | "operator" | "utility" | "equals";
+  wide?: boolean;
+  icon?: IconDefinition;
+}
