@@ -9,3 +9,5 @@ export interface CalculatorButton {
   wide?: boolean;
   icon?: IconDefinition;
 }
+
+export type CalculatorMode = "basic" | "scientific";

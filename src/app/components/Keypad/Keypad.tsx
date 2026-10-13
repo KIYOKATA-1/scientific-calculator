@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { basicButtons, scientificButtons } from "@/data/buttons";
 import styles from "./Keypad.module.scss";
-import {scientificButtons, basicButtons} from '@/data/buttons'
 
 interface KeypadProps {
   scientific?: boolean;
+  onInput: (value: string) => void;
 }
 
-export default function Keypad({ scientific = true }: KeypadProps) {
+export default function Keypad({
+  scientific = true,
+  onInput,
+}: KeypadProps) {
   const buttons = scientific
     ? [...scientificButtons, ...basicButtons]
     : basicButtons;
@@ -15,13 +19,14 @@ export default function Keypad({ scientific = true }: KeypadProps) {
     <div
       className={styles.keypad}
       role="group"
-      aria-label="Клавиши калькулятора"
+      aria-label="Calculator keys"
     >
       {buttons.map((button) => (
         <button
           key={button.id}
           type="button"
           aria-label={button.ariaLabel}
+          onClick={() => onInput(button.value)}
           className={[
             styles.button,
             styles[button.variant],

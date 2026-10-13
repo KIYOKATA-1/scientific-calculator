@@ -1,0 +1,51 @@
+.display {
+  min-width: 0;
+  min-height: 150px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 20px;
+  background: #1c1f22;
+  text-align: right;
+  box-shadow:
+    inset 5px 5px 12px rgba(0, 0, 0, 0.25),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.02);
+}
+
+.expression {
+  margin: 0;
+  color: #a6abb0;
+  font-size: 18px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.result {
+  color: #f5f5f5;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.error {
+  margin: 0;
+  color: #ffaaa3;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .display {
+    padding: 20px;
+  }
+
+  .result {
+    font-size: 48px;
+  }
+}
