@@ -1,7 +1,10 @@
+import Calculator from "./components/Calculator/Calculator";
+import styles from "./page.module.scss";
+
 export default function Home() {
   return (
-    <main>
-      <h1>Scientific Calculator</h1>
+    <main className={styles.page}>
+      <Calculator />
     </main>
   );
 }
